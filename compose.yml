@@ -4,6 +4,9 @@ services:
     platform: linux/arm64
     container_name: mongo
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
-      - ./data:/data/db 
+      - datos_tienda:/data/db
+
+volumes:
+  datos_tienda:

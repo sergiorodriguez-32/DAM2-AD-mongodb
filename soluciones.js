@@ -2,7 +2,7 @@
 // DAM2 - ACCESO A DATOS
 // PRÁCTICA MONGODB - TIENDA ONLINE
 // ============================================================
-// Nombre:
+// Nombre: Sergio Rodríguez López
 // Fecha:
 //
 // Escribe debajo de cada enunciado la consulta correspondiente.
@@ -14,20 +14,34 @@
 
 // 1. Muestra todas las bases de datos disponibles.
 
+//show dbs
+
 // 2. Selecciona la base de datos `tienda`.
+
+//use tienda
 
 // 3. Lista todas sus colecciones.
 
+//show collections
+
 // 4. Averigua cuántos documentos tiene cada colección.
 
+//db.productos.countDocuments()
+//db.clientes.countDocuments()
+//db.pedidos.countDocuments()
+
 // 5. Muestra todos los productos registrados.
+//db.productos.find()
 
 // 6. Obtén un único producto.
+//db.productos.findOne()
 
 // 7. Descubre qué categorías de productos existen.
+//db.productos.distinct('categoriaId')
 
 // 8. Muestra únicamente el nombre y el precio de todos los
 // productos, sin mostrar su _id.
+//db.productos.find({}, { _id: 0, nombre: 1, precio: 1 })
 
 // BLOQUE 2. CONSULTAS Y FILTROS
 // ============================================================
