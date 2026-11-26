@@ -3,7 +3,7 @@
 // PRÁCTICA MONGODB - TIENDA ONLINE
 // ============================================================
 // Nombre: Sergio Rodríguez López
-// Fecha:
+// Fecha:26/11/2026
 //
 // Escribe debajo de cada enunciado la consulta correspondiente.
 // Utiliza la chuleta de MongoDB como referencia.
@@ -48,29 +48,50 @@
 
 // 9. Busca todos los productos de informática.
 
+//db.productos.find({ categoriaId: 'CAT01' })
+
 // 10. Encuentra los productos cuyo precio sea superior a 100 €.
+
+//db.productos.find({ precio: { $gt: 100 } })
 
 // 11. Busca los productos que cuestan entre 50 € y 500 €,
 // ambos incluidos.
 
+//db.productos.find({ precio: { $gte: 50, $lte: 500 } })
+
 // 12. Localiza los productos que no tienen stock.
+
+//db.productos.find({stock:{$gte:0}})
 
 // 13. Encuentra los productos con stock superior a 10 unidades
 // y precio inferior a 100 €.
 
+//db.productos.find({$and: [{stock:{$gt:10}},{precio:{$lt:100}}]})
+
+
 // 14. Busca productos pertenecientes a las categorías
 // `audio` o `movil`.
+
+//db.productos.find({ categoriaId: { $in: ['CAT02', 'CAT03'] } })
 
 // 15. Encuentra los productos que no pertenecen
 // a la categoría `informatica`.
 
+//db.productos.find({ categoriaId: { $nin: ['CAT01'] } })
+
 // 16. Busca productos que cuesten menos de 30 € o tengan
 // más de 50 unidades en stock.
 
+//db.productos.find({ $or: [ { precio: { $lt: 30 } }, { stock: { $gt: 50 } } ] })
+
 // 17. Encuentra productos cuyo precio no sea superior a 100 €.
+
+//db.productos.find({ precio: { $not: { $gt: 100 } } })
 
 // 18. Localiza todos los productos cuyo nombre contenga
 // la palabra `móvil`, sin distinguir mayúsculas de minúsculas.
+
+//db.productos.find({ nombre: { $regex: 'móvil', $options: 'i' } })
 
 // BLOQUE 3. CAMPOS, TIPOS Y ORDENACIÓN
 // ============================================================
