@@ -98,25 +98,46 @@
 
 // 19. Encuentra los productos que tienen el campo `descuento`.
 
-//
+//db.productos.find({ descuento: { $exists: true } })
 
 // 20. Busca los productos que no tienen descuento definido.
+
+//db.productos.find({ descuento: { $exists: false } })
 
 // 21. Comprueba qué productos tienen el precio almacenado
 // como número.
 
+//db.productos.find({ precio: { $type: 'number' } })
+
 // 22. Encuentra los productos cuyo precio de venta
 // sea superior a su coste.
 
+//db.productos.find({ $expr: { $gt: ['$precio', '$coste'] } })
+
 // 23. Ordena los productos del más barato al más caro.
+
+//db.productos.find().sort({precio:-1})
 
 // 24. Obtén los tres productos más caros.
 
+//db.productos.find().sort({ precio: -1 }).limit(3)
+
 // 25. Muestra los tres productos más baratos que tengan stock.
+
+//db.productos.find({stock: {$gt:0}}).sort({ precio: 1 }).limit(3)
 
 // 26. Implementa una paginación que muestre tres productos
 // por página, ordenados por _id.
 // Obtén las páginas 1, 2 y 3.
+
+//// Página 1
+//db.productos.find().sort({ _id: 1 }).limit(3)
+
+// Página 2
+//db.productos.find().sort({ _id: 1 }).skip(3).limit(3)
+
+// Página 3
+//db.productos.find().sort({ _id: 1 }).skip(6).limit(3)
 
 // BLOQUE 4. INSERCIÓN Y ACTUALIZACIÓN
 // ============================================================
@@ -125,28 +146,54 @@
 // 27. Inserta un producto nuevo con código, nombre, categoría,
 // precio, coste, stock y etiquetas.
 
+//db.productos_practica.insertOne({ codigo: 'P000', nombre: 'Prueba', categoriaId: 'CAT01', precio: 50, coste: 30, stock: 1, etiquetas: ['usado'] })
+
 // 28. Inserta cinco productos adicionales en una única operación.
+
+//db.productos_practica.insertMany([
+ // { codigo: 'P101', nombre: 'Webcam', categoriaId: 'CAT01', precio: 40, coste: 25, stock: 10, etiquetas: ['oficina'] },
+  //{ codigo: 'P102', nombre: 'Micrófono', categoriaId: 'CAT02', precio: 55, coste: 35, stock: 7, etiquetas: ['audio', 'gaming'] },
+  //{ codigo: 'P103', nombre: 'Cargador móvil', categoriaId: 'CAT03', precio: 15, coste: 6, stock: 60, etiquetas: ['accesorio'] },
+  //{ codigo: 'P104', nombre: 'Alfombrilla', categoriaId: 'CAT01', precio: 10, coste: 4, stock: 0, etiquetas: ['gaming'] },
+  //{ codigo: 'P105', nombre: 'Soporte monitor', categoriaId: 'CAT01', precio: 30, coste: 18, stock: 0, etiquetas: ['oficina'] }
+//])
 
 // 29. Cambia el precio de uno de los productos insertados.
 
+//db.productos.updateOne({codigo:'P000'},{$set: {precio: 28}})
+
 // 30. Incrementa en 20 unidades su stock.
+
+//db.productos.updateOne({codigo:'P000'},{$inc:{stock:+20}})
 
 // 31. Reduce el precio de todos los productos de una categoría
 // multiplicándolo por 0.9.
 
+//
+
 // 32. Añade un campo `activo` con valor true
 // a todos los productos.
 
+//
+
 // 33. Cambia el nombre del campo `activo` por `disponible`.
 
+//
+
 // 34. Elimina el campo `disponible` de un producto.
+
+//
 
 // 35. Realiza una operación upsert sobre un producto
 // con código `P999`.
 // Si existe, actualízalo; si no, insértalo.
 
+//
+
 // 36. Sustituye completamente uno de los documentos de prueba,
 // conservando su _id.
+
+//
 
 // BLOQUE 5. ELIMINACIÓN
 // ============================================================
