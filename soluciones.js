@@ -169,7 +169,7 @@
 // 31. Reduce el precio de todos los productos de una categoría
 // multiplicándolo por 0.9.
 
-//
+//db.productos_practica.updateMany({ categoriaId: 'CAT01' }, { $mul: { precio: 0.9 } })
 
 // 32. Añade un campo `activo` con valor true
 // a todos los productos.
